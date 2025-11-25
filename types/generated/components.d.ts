@@ -3,11 +3,13 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface MediasImage extends Struct.ComponentSchema {
   collectionName: 'components_medias_images';
   info: {
+    description: '';
     displayName: 'Image';
   };
   attributes: {
     Copyright: Schema.Attribute.String;
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Recto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Verso: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "matters",
+  "info": {
+    "singularName": "matter",
+    "pluralName": "matters",
+    "displayName": "Matter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "Technique": {
+      "type": "string"
+    },
+    "Format": {
+      "type": "string"
+    },
+    "Year": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,11 +1,15 @@
 {
   "collectionName": "components_medias_images",
   "info": {
-    "displayName": "Image"
+    "displayName": "Image",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Image": {
+    "Copyright": {
+      "type": "string"
+    },
+    "Verso": {
       "allowedTypes": [
         "images",
         "files",
@@ -15,8 +19,15 @@
       "type": "media",
       "multiple": false
     },
-    "Copyright": {
-      "type": "string"
+    "Recto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
