@@ -385,6 +385,8 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Email: Schema.Attribute.Email;
+    Instagram: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
       Schema.Attribute.Private;
@@ -398,6 +400,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
 export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
   collectionName: 'exhibitions';
   info: {
+    description: '';
     displayName: 'Exhibition';
     pluralName: 'exhibitions';
     singularName: 'exhibition';
@@ -409,17 +412,27 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Curator: Schema.Attribute.String;
+    EndingDate: Schema.Attribute.Date;
+    Link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::exhibition.exhibition'
     > &
       Schema.Attribute.Private;
+    Medias: Schema.Attribute.Component<'medias.image', true>;
+    NewFields: Schema.Attribute.Component<'text.group-field', true>;
+    Place: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    StartingDate: Schema.Attribute.Date;
+    Structure: Schema.Attribute.String;
+    Text: Schema.Attribute.Blocks;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Year: Schema.Attribute.Integer;
   };
 }
 
