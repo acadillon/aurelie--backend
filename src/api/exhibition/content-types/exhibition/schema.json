@@ -24,7 +24,7 @@
         }
       }
     },
-    "Year": {
+    "year": {
       "type": "integer",
       "pluginOptions": {
         "i18n": {
