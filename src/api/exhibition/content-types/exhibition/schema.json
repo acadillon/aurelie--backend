@@ -4,7 +4,8 @@
   "info": {
     "singularName": "exhibition",
     "pluralName": "exhibitions",
-    "displayName": "Exhibition"
+    "displayName": "Exhibition",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,6 +13,40 @@
   "attributes": {
     "Title": {
       "type": "string"
+    },
+    "Year": {
+      "type": "integer"
+    },
+    "StartingDate": {
+      "type": "date"
+    },
+    "EndingDate": {
+      "type": "date"
+    },
+    "Place": {
+      "type": "string"
+    },
+    "Structure": {
+      "type": "string"
+    },
+    "Text": {
+      "type": "blocks"
+    },
+    "Curator": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "NewFields": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.group-field"
+    },
+    "Medias": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medias.image"
     }
   }
 }

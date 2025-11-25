@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface MediasImage extends Struct.ComponentSchema {
+  collectionName: 'components_medias_images';
+  info: {
+    displayName: 'Image';
+  };
+  attributes: {
+    Copyright: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface MediasTestlandscape extends Struct.ComponentSchema {
   collectionName: 'components_medias_testlandscapes';
   info: {
@@ -28,11 +39,24 @@ export interface MediasTesttestLandscape extends Struct.ComponentSchema {
   };
 }
 
+export interface TextGroupField extends Struct.ComponentSchema {
+  collectionName: 'components_text_group_fields';
+  info: {
+    displayName: 'GroupField';
+  };
+  attributes: {
+    Content: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'medias.image': MediasImage;
       'medias.testlandscape': MediasTestlandscape;
       'medias.testtest-landscape': MediasTesttestLandscape;
+      'text.group-field': TextGroupField;
     }
   }
 }
