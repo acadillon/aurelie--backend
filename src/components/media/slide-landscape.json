@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_media_slide_landscapes",
+  "info": {
+    "displayName": "SlideLandscape"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "private": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  },
+  "config": {}
+}
