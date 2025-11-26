@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mediums",
+  "info": {
+    "singularName": "medium",
+    "pluralName": "mediums",
+    "displayName": "Medium",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "medium": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "atlas": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::atlas.atlas",
+      "mappedBy": "medium"
+    }
+  }
+}

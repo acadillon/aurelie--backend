@@ -1,14 +1,15 @@
 {
   "collectionName": "components_text_group_fields",
   "info": {
-    "displayName": "GroupField"
+    "displayName": "GroupField",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Label": {
+    "label": {
       "type": "string"
     },
-    "Content": {
+    "content": {
       "type": "string"
     }
   }

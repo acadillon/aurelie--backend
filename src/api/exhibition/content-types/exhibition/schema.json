@@ -25,14 +25,14 @@
       }
     },
     "year": {
-      "type": "integer",
+      "type": "biginteger",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "StartingDate": {
+    "startingDate": {
       "type": "date",
       "pluginOptions": {
         "i18n": {
@@ -40,7 +40,7 @@
         }
       }
     },
-    "EndingDate": {
+    "endingDate": {
       "type": "date",
       "pluginOptions": {
         "i18n": {
@@ -48,7 +48,7 @@
         }
       }
     },
-    "Place": {
+    "place": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -56,7 +56,7 @@
         }
       }
     },
-    "Structure": {
+    "structure": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -64,7 +64,7 @@
         }
       }
     },
-    "Text": {
+    "text": {
       "type": "blocks",
       "pluginOptions": {
         "i18n": {
@@ -72,7 +72,7 @@
         }
       }
     },
-    "Curator": {
+    "curator": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "Link": {
+    "link": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -88,7 +88,7 @@
         }
       }
     },
-    "NewFields": {
+    "contributionFields": {
       "type": "component",
       "repeatable": true,
       "component": "text.group-field",
@@ -98,18 +98,27 @@
         }
       }
     },
-    "Medias": {
-      "type": "component",
-      "repeatable": true,
-      "component": "medias.image",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "Slug": {
+    "slug": {
       "type": "uid"
+    },
+    "exhibitionView": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "atlasRelation": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::atlas.atlas",
+      "mappedBy": "exhibition"
     }
   }
 }

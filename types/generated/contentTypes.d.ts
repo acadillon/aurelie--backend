@@ -386,7 +386,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    Bio: Schema.Attribute.Text &
+    bio: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -395,13 +395,13 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Email: Schema.Attribute.Email &
+    email: Schema.Attribute.Email &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Instagram: Schema.Attribute.String &
+    instagram: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -413,6 +413,52 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Year: Schema.Attribute.BigInteger;
+  };
+}
+
+export interface ApiAtlasAtlas extends Struct.CollectionTypeSchema {
+  collectionName: 'atlases';
+  info: {
+    description: '';
+    displayName: 'Atlas';
+    pluralName: 'atlases';
+    singularName: 'atlas';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    duration: Schema.Attribute.String;
+    exhibition: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::exhibition.exhibition'
+    >;
+    format: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::atlas.atlas'>;
+    medium: Schema.Attribute.Relation<'oneToOne', 'api::medium.medium'>;
+    origin: Schema.Attribute.String;
+    parents: Schema.Attribute.Relation<'manyToMany', 'api::atlas.atlas'>;
+    publishedAt: Schema.Attribute.DateTime;
+    siblings: Schema.Attribute.Relation<'manyToMany', 'api::atlas.atlas'>;
+    slug: Schema.Attribute.UID;
+    technique: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.BigInteger;
   };
 }
 
@@ -433,22 +479,31 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    atlasRelation: Schema.Attribute.Relation<'oneToMany', 'api::atlas.atlas'>;
+    contributionFields: Schema.Attribute.Component<'text.group-field', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    copyright: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Curator: Schema.Attribute.String &
+    curator: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    EndingDate: Schema.Attribute.Date &
+    endingDate: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Link: Schema.Attribute.String &
+    exhibitionView: Schema.Attribute.Media<'images' | 'files' | 'videos', true>;
+    link: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -459,39 +514,27 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::exhibition.exhibition'
     >;
-    Medias: Schema.Attribute.Component<'medias.image', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    NewFields: Schema.Attribute.Component<'text.group-field', true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Place: Schema.Attribute.String &
+    place: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    Slug: Schema.Attribute.UID;
-    StartingDate: Schema.Attribute.Date &
+    slug: Schema.Attribute.UID;
+    startingDate: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Structure: Schema.Attribute.String &
+    structure: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Text: Schema.Attribute.Blocks &
+    text: Schema.Attribute.Blocks &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -506,7 +549,7 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year: Schema.Attribute.Integer &
+    year: Schema.Attribute.BigInteger &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -515,13 +558,13 @@ export interface ApiExhibitionExhibition extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiMatterMatter extends Struct.CollectionTypeSchema {
-  collectionName: 'matters';
+export interface ApiMediumMedium extends Struct.CollectionTypeSchema {
+  collectionName: 'mediums';
   info: {
     description: '';
-    displayName: 'Matter';
-    pluralName: 'matters';
-    singularName: 'matter';
+    displayName: 'Medium';
+    pluralName: 'mediums';
+    singularName: 'medium';
   };
   options: {
     draftAndPublish: true;
@@ -532,46 +575,22 @@ export interface ApiMatterMatter extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    atlas: Schema.Attribute.Relation<'oneToOne', 'api::atlas.atlas'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Format: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Image: Schema.Attribute.Component<'medias.image', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::matter.matter'>;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::medium.medium'>;
+    medium: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    Slug: Schema.Attribute.UID;
-    Technique: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Year: Schema.Attribute.Integer &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
   };
 }
 
@@ -1085,8 +1104,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::atlas.atlas': ApiAtlasAtlas;
       'api::exhibition.exhibition': ApiExhibitionExhibition;
-      'api::matter.matter': ApiMatterMatter;
+      'api::medium.medium': ApiMediumMedium;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

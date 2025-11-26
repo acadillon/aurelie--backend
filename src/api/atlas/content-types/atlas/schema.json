@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "atlases",
+  "info": {
+    "singularName": "atlas",
+    "pluralName": "atlases",
+    "displayName": "Atlas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "technique": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "year": {
+      "type": "biginteger"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "medium": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::medium.medium",
+      "inversedBy": "atlas"
+    },
+    "siblings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::atlas.atlas",
+      "inversedBy": "parents"
+    },
+    "parents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::atlas.atlas",
+      "mappedBy": "siblings"
+    },
+    "exhibition": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::exhibition.exhibition",
+      "inversedBy": "atlasRelation"
+    }
+  }
+}
