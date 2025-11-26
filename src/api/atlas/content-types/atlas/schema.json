@@ -49,6 +49,15 @@
         "files"
       ]
     },
+    "Video": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "customField": "plugin::oembed.oembed"
+    },
     "medium": {
       "type": "relation",
       "relation": "oneToOne",
