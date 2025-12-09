@@ -18,9 +18,10 @@ export default ({ env }) => ({
                 delete: {},
             },
             breakpoints: {
-                xlarge: 1920,
-                medium: 750,
+                thumbnail: 150,
                 small: 500,
+                medium: 750,
+                xlarge: 1920,
             },
         },
     },
