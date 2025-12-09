@@ -488,6 +488,20 @@ export interface ApiAtlasAtlas extends Struct.CollectionTypeSchema {
   };
   options: {
     draftAndPublish: true;
+    populate: {
+      Image: {
+        populate: ['formats'];
+      };
+      medium: true;
+      siblings: {
+        populate: {
+          Image: {
+            populate: ['formats'];
+          };
+          medium: true;
+        };
+      };
+    };
   };
   pluginOptions: {
     i18n: {

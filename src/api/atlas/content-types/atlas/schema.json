@@ -8,7 +8,25 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populate": {
+      "Image": {
+        "populate": [
+          "formats"
+        ]
+      },
+      "medium": true,
+      "siblings": {
+        "populate": {
+          "Image": {
+            "populate": [
+              "formats"
+            ]
+          },
+          "medium": true
+        }
+      }
+    }
   },
   "pluginOptions": {
     "i18n": {
